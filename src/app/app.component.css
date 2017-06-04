@@ -1,0 +1,57 @@
+.content {
+    height: 600px;
+    width: 100%;
+}
+
+.min,
+.hour,
+.clock,
+.second {
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    display: block;
+    position: absolute;
+}
+
+.second {
+    background-image: url('../assets/images/second.png');
+    background-size: 100%;
+    background-position: 1px -69px;
+    height: 480px;
+    left: 464px;
+    top: 142px;
+    width: 32px;
+    z-index: 5;
+}
+
+.min {
+    background-image: url('../assets/images/mn.png');
+    background-size: 100%;
+    background-position: 0px 26px;
+    height: 480px;
+    left: 465px;
+    top: 140px;
+    width: 32px;
+    z-index: 7;
+}
+
+.hour {
+    background-image: url('../assets/images/hr.png');
+    background-size: 100%;
+    background-position: 2px -18px;
+    height: 480px;
+    left: 454px;
+    top: 140px;
+    width: 48px;
+    z-index: 5;
+}
+
+.clock {
+    background-image: url('../assets/images/clock.png');
+    background-size: 480px;
+    height: 480px;
+    left: 240px;
+    top: 140px;
+    width: 480px;
+    z-index: 9;
+}
