@@ -1,9 +1,13 @@
 <h1>
     ng-clock
 </h1>
-<p>Hours : {{hours}}</p>
-<p>Minutes : {{minutes}}</p>
-<p>Seconds : {{seconds}}</p>
+<div class="digital-clock">
+    <div class="digits">
+        <div class="digit">{{hours}}</div>
+        <div class="digit">{{minutes}}</div>
+        <div class="digit">{{seconds}}</div>
+    </div>
+</div>
 <div class="content">
     <div class="clock"></div>
     <div id="hourArrow" class="hour"></div>

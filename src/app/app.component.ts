@@ -26,16 +26,16 @@ export class AppComponent implements OnInit {
     const minArrow = document.getElementById('minArrow');
     const hourArrow = document.getElementById('hourArrow');
 
-    Observable.interval(1000)
+    Observable.interval(500)
       .subscribe(() => {
         this.currentDate = new Date();
         this.seconds = this.currentDate.getSeconds();
         this.minutes = this.currentDate.getMinutes();
         this.hours = this.currentDate.getHours();
 
-        const secondAnimationPlayer = this.buildSecondsAnimationWithBuilder(secondArrow);
-        const minuteAnimationPlayer = this.buildMinutesAnimationWithBuilder(minArrow);
-        const hourAnimationPlayer = this.buildHoursAnimationWithBuilder(hourArrow);
+        const secondAnimationPlayer = this.buildSecondsOrMinsAnimationBuilder(false, this.seconds, secondArrow);
+        const minuteAnimationPlayer = this.buildSecondsOrMinsAnimationBuilder(false, this.minutes, minArrow);
+        const hourAnimationPlayer = this.buildSecondsOrMinsAnimationBuilder(true, this.hours, hourArrow);
 
         secondAnimationPlayer.play();
         minuteAnimationPlayer.play();
@@ -43,28 +43,13 @@ export class AppComponent implements OnInit {
       });
   }
 
-  buildSecondsAnimationWithBuilder(element: any) {
-    const secondsAnimation = this._builder.build([
-      style({ transform: 'rotate( ' + this.calcRotationForMinutesSeconds(this.seconds) + 'deg )' }),
-      animate(1000, style({ transform: 'rotate( ' + this.calcRotationForMinutesSeconds(this.seconds) + 'deg )' }))
+  buildSecondsOrMinsAnimationBuilder(isHours: boolean, nbUnits: number, element: any) {
+    const angle = isHours ? this.calcRotationForHours(nbUnits) : this.calcRotationForMinutesSeconds(nbUnits);
+    const builder = this._builder.build([
+      style({ transform: 'rotate( ' + angle + 'deg )' }),
+      animate(1000, style({ transform: 'rotate( ' + angle + 'deg )' }))
     ]);
-    return secondsAnimation.create(element);
-  }
-
-  buildMinutesAnimationWithBuilder(element: any) {
-    const minutesAnimation = this._builder.build([
-      style({ transform: 'rotate( ' + this.calcRotationForMinutesSeconds(this.minutes) + 'deg )' }),
-      animate(1000, style({ transform: 'rotate( ' + this.calcRotationForMinutesSeconds(this.minutes) + 'deg )' }))
-    ]);
-    return minutesAnimation.create(element);
-  }
-
-  buildHoursAnimationWithBuilder(element: any) {
-    const hoursAnimation = this._builder.build([
-      style({ transform: 'rotate( ' + this.calcRotationForHours(this.hours) + 'deg )' }),
-      animate(1000, style({ transform: 'rotate( ' + this.calcRotationForHours(this.hours) + 'deg )' }))
-    ]);
-    return hoursAnimation.create(element);
+    return builder.create(element);
   }
 
   calcRotationForMinutesSeconds(sOrM: number): number {
