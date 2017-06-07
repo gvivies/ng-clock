@@ -1,16 +1,26 @@
-.content {
-    height: 600px;
-    width: 100%;
+.first-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.analogic-clock {
+    height: 500px;
+    width: 500px;
 }
 
 .min,
 .hour,
 .clock,
 .second {
-    background-position: 0 0;
     background-repeat: no-repeat;
     display: block;
-    position: absolute;
+    position: relative;
+}
+
+.clock {
+    border-radius: 240px;
+    box-shadow: 4px 4px 16px #aaa;
 }
 
 .second {
@@ -18,8 +28,7 @@
     background-size: 100%;
     background-position: 1px -69px;
     height: 480px;
-    left: 464px;
-    top: 142px;
+    margin-left: 225px;
     width: 32px;
     z-index: 9;
 }
@@ -29,8 +38,8 @@
     background-size: 100%;
     background-position: 3px 26px;
     height: 480px;
-    left: 465px;
-    top: 140px;
+    margin-bottom: -480px;
+    margin-left: 224px;
     width: 32px;
     z-index: 7;
 }
@@ -40,18 +49,17 @@
     background-size: 100%;
     background-position: -3px -18px;
     height: 480px;
-    left: 454px;
-    top: 140px;
+    margin-bottom: -480px;
+    margin-left: 220px;
     width: 48px;
     z-index: 5;
 }
 
 .clock {
     background-image: url('../assets/images/clock.png');
+    background-position: 0 0;
     background-size: 480px;
     height: 480px;
-    left: 240px;
-    top: 140px;
     width: 480px;
     z-index: 1;
 }
@@ -69,10 +77,40 @@
     flex-direction: row;
     justify-content: space-around;
     height: 120px;
-    width: 40%;
+    width: 240px;
 }
 
 .digit {
-    font-size: 44px;
     font-weight: bold;
+}
+
+.card {
+    background-color: #fff;
+    border: 1px solid #666;
+    border-radius: 4px;
+    box-shadow: 2px 2px 2px #aaa;
+    font-size: 44px;
+    height: 72px;
+    overflow: hidden;
+    width: 72px;
+    z-index: 9;
+}
+
+.cardContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.under-card {
+    background-color: #c2c2c2;
+    border: 1px solid #666;
+    border-radius: 4px;
+    box-shadow: 2px 2px 2px #aaa;
+    height: 72px;
+    margin-right: -80px;
+    margin-bottom: -72px;
+    width: 72px;
+    z-index: 7;
 }
