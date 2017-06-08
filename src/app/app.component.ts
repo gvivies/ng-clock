@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
-import { style, animate, AnimationBuilder, AnimationPlayer } from '@angular/animations';
+import { style, animation, animate, AnimationBuilder, AnimationPlayer } from '@angular/animations';
 
 const rotatingSecond = { transform: 'rotate( {{ seconds }} )' };
 
@@ -19,23 +19,33 @@ export class AppComponent implements OnInit {
   private oldHours: number;
   private oldMins: number;
 
+  @ViewChild('secondArrow')
+  public secondArrow;
+
+  @ViewChild('minArrow')
+  public minArrow;
+
+  @ViewChild('hourArrow')
+  public hourArrow;
+
+  @ViewChild('cardHours')
+  public cardHours;
+
+  @ViewChild('cardMins')
+  public cardMins;
+
+  @ViewChild('cardSeconds')
+  public cardSeconds;
+
   constructor(private _builder: AnimationBuilder) {
 
   }
 
   ngOnInit() {
 
-    const secondArrow = document.getElementById('secondArrow');
-    const minArrow = document.getElementById('minArrow');
-    const hourArrow = document.getElementById('hourArrow');
-
-    const cardHours = document.getElementById('cardHours');
-    const cardMins = document.getElementById('cardMins');
-    const cardSeconds = document.getElementById('cardSeconds');
-
-    const cardHoursAnimationPlayer = this.buildCard(cardHours);
-    const cardMinsAnimationPlayer = this.buildCard(cardMins);
-    const cardSecondsAnimationPlayer = this.buildCard(cardSeconds);
+    const cardHoursAnimationPlayer = this.buildCard(this.cardHours.nativeElement);
+    const cardMinsAnimationPlayer = this.buildCard(this.cardMins.nativeElement);
+    const cardSecondsAnimationPlayer = this.buildCard(this.cardSeconds.nativeElement);
 
     this.currentDate = new Date();
     this.oldMins = this.currentDate.getMinutes();
@@ -51,9 +61,9 @@ export class AppComponent implements OnInit {
         this.seconds = this.currentDate.getSeconds();
         this.minutes = this.currentDate.getMinutes();
         this.hours = this.currentDate.getHours();
-        secondAnimationPlayer = this.buildSecondsOrMinsAnimationBuilder(false, this.seconds, secondArrow);
-        minuteAnimationPlayer = this.buildSecondsOrMinsAnimationBuilder(false, this.minutes, minArrow);
-        hourAnimationPlayer = this.buildSecondsOrMinsAnimationBuilder(true, this.hours, hourArrow);
+        secondAnimationPlayer = this.buildSecondsOrMinsAnimationBuilder(false, this.seconds, this.secondArrow.nativeElement);
+        minuteAnimationPlayer = this.buildSecondsOrMinsAnimationBuilder(false, this.minutes, this.minArrow.nativeElement);
+        hourAnimationPlayer = this.buildSecondsOrMinsAnimationBuilder(true, this.hours, this.hourArrow.nativeElement);
         secondAnimationPlayer.play();
         minuteAnimationPlayer.play();
         hourAnimationPlayer.play();
