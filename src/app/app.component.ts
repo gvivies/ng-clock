@@ -1,6 +1,8 @@
+import { TimerService } from './timer.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { style, animation, animate, AnimationBuilder, AnimationPlayer } from '@angular/animations';
+import { Subject } from "rxjs/Subject";
 
 const rotatingSecond = { transform: 'rotate( {{ seconds }} )' };
 
@@ -11,22 +13,17 @@ const rotatingSecond = { transform: 'rotate( {{ seconds }} )' };
 })
 export class AppComponent implements OnInit {
 
-  private currentDate: Date;
-  private hours: number;
-  private minutes: number;
-  private seconds: number;
-
-  constructor() {
+  constructor(private timerService: TimerService) {
   }
 
   ngOnInit() {
 
     Observable.interval(1000)
       .subscribe(() => {
-        this.currentDate = new Date();
-        this.seconds = this.currentDate.getSeconds();
-        this.minutes = this.currentDate.getMinutes();
-        this.hours = this.currentDate.getHours();
+        const currentDate = new Date();
+        this.timerService.setHours(currentDate.getHours());
+        this.timerService.setMinutes(currentDate.getMinutes());
+        this.timerService.setSeconds(currentDate.getSeconds());
       });
   }
 

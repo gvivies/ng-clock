@@ -1,3 +1,4 @@
+import { TimerService } from './../timer.service';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -7,13 +8,22 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class DigitalClockComponent implements OnInit {
 
-  @Input() hours: number;
-  @Input() minutes: number;
-  @Input() seconds: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
 
-  constructor() { }
+  constructor(private timerService: TimerService) { }
 
   ngOnInit() {
+    this.timerService.getHours().subscribe((hours) => {
+      this.hours = hours;
+    });
+    this.timerService.getMinutes().subscribe((minutes) => {
+      this.minutes = minutes;
+    });
+    this.timerService.getSeconds().subscribe((seconds) => {
+      this.seconds = seconds;
+    });
   }
 
 }

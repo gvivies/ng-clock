@@ -1,3 +1,4 @@
+import { TimerService } from './timer.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -23,7 +24,7 @@ import { ClockwiseComponent } from './clockwise/clockwise.component';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [TimerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
