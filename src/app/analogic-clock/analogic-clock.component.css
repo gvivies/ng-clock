@@ -1,0 +1,23 @@
+.analogic-clock {
+    height: 500px;
+    width: 500px;
+}
+
+.analogic-clock {
+    height: 500px;
+    width: 500px;
+}
+
+.clock {
+    background-image: url('../../assets/images/clock.png');
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: 480px;
+    border-radius: 240px;
+    box-shadow: 4px 4px 16px #aaa;
+    display: block;
+    height: 480px;
+    position: relative;
+    width: 480px;
+    z-index: 1;
+}

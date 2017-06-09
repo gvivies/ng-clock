@@ -1,0 +1,15 @@
+.digital-clock {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 120px;
+    width: 100%;
+}
+
+.digits {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 120px;
+    width: 240px;
+}

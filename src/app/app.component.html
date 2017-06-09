@@ -2,33 +2,6 @@
     ng4-clock
 </h1>
 <div class="first-section">
-    <div class="analogic-clock">
-        <div class="clock">
-            <div #hourArrow class="hour"></div>
-            <div #minArrow class="min"></div>
-            <div #secondArrow class="second"></div>
-        </div>
-    </div>
+    <app-analogic-clock [hours]="hours" [minutes]="minutes" [seconds]="seconds"></app-analogic-clock>
 </div>
-<div class="digital-clock">
-    <div class="digits">
-        <div class="under-card"></div>
-        <div #cardHours class="card">
-            <div class="cardContent">
-                <div class="digit">{{ formatDigit(hours) }}</div>
-            </div>
-        </div>
-        <div class="under-card"></div>
-        <div #cardMins class="card">
-            <div class="cardContent">
-                <div class="digit">{{ formatDigit(minutes) }}</div>
-            </div>
-        </div>
-        <div class="under-card"></div>
-        <div #cardSeconds class="card">
-            <div class="cardContent">
-                <div class="digit">{{ formatDigit(seconds) }}</div>
-            </div>
-        </div>
-    </div>
-</div>
+<app-digital-clock [hours]="hours" [minutes]="minutes" [seconds]="seconds"></app-digital-clock>
